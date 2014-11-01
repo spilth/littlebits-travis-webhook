@@ -11,6 +11,19 @@ class TravisWebhook < Sinatra::Base
   set :cloudbit_token, ENV['CLOUDBIT_ACCESS_TOKEN']
   set :cloudbit_id, ENV['CLOUDBIT_DEVICE_ID']
 
+  helpers do
+    def protected!
+      return if authorized?
+      headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
+      halt 401, "Not authorized\n"
+    end
+
+    def authorized?
+      @auth ||=  Rack::Auth::Basic::Request.new(request.env)
+      @auth.provided? and @auth.basic? and @auth.credentials and @auth.credentials == [ENV['BASIC_USERNAME'], ENV['BASIC_PASSWORD']]
+    end
+  end
+
   post '/' do
     if not valid_request?
       puts "Invalid payload request for repository #{repo_slug}"
@@ -22,16 +35,17 @@ class TravisWebhook < Sinatra::Base
       else
         red
       end
-
     end
   end
 
-  get '/red' do
-    red
+  get '/failure' do
+    protected!
+    failure
   end
 
-  get '/green' do
-    green
+  get '/success' do
+    protected!
+    success
   end
 
   def valid_request?
@@ -47,14 +61,14 @@ class TravisWebhook < Sinatra::Base
     env['HTTP_TRAVIS_REPO_SLUG']
   end
 
-  def red
+  def failure
     cloudbitClient.output(0)
-    "Red"
+    "Failure"
   end
 
-  def green
+  def success
     cloudbitClient.output(100)
-    "Green"
+    "Success"
   end
 
   def cloudbitClient
