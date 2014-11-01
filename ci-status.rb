@@ -19,7 +19,7 @@ def cloudbitClient
   CloudBitClient.new(ENV['CLOUDBIT_ACCESS_TOKEN'], ENV['CLOUDBIT_DEVICE_ID'])
 end
 
-get '/' do
+post '/' do
   payload = JSON.parse(params[:payload])
 
   if payload[:status_message] == 'Passed'
