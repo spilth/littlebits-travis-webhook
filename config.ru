@@ -1,3 +1,3 @@
 require './ci-status'
 
-run Sinatra::Application
+run TravisWebhook
