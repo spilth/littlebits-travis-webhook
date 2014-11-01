@@ -31,9 +31,9 @@ class TravisWebhook < Sinatra::Base
       payload = JSON.parse(params[:payload])
 
       if payload["status_message"] == 'Passed'
-        green
+        success
       else
-        red
+        failure
       end
     end
   end
