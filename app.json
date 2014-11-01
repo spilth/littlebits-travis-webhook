@@ -1,5 +1,5 @@
 {
-  "name": "Littlebits Travis Webhook",
+  "name": "littleBits Travis Webhook",
   "description": "Travis Webhook that sends output to a littleBits CloudBit",
   "keywords": [
     "littleBits",
@@ -10,10 +10,10 @@
   "env": {
     "LANG": "en_US.UTF-8",
     "RACK_ENV": "production",
-    "CLOUDBIT_ACCESS_TOKEN": "REDACTED",
-    "CLOUDBIT_DEVICE_ID": "REDACTED",
-    "TRAVIS_USER_TOKEN": "REDACTED",
-    "HTTP_TRAVIS_REPO_SLUG": "REDACTED",
-    "HTTP_AUTHENTICATION": "REDACTED"
+    "CLOUDBIT_ACCESS_TOKEN": "Get this from the Settings page of http://control.littlebitscloud.cc",
+    "CLOUDBIT_DEVICE_ID": "Get this from the Settings page of http://control.littlebitscloud.cc",
+    "TRAVIS_USER_TOKEN": "Get this from https://travis-ci.org/profile/info",
+    "HTTP_TRAVIS_REPO_SLUG": "The username/reponame of the project on Travis CI",
+    "HTTP_AUTHENTICATION": "Check the README to generate this"
   }
 }
