@@ -22,7 +22,7 @@ end
 post '/' do
   payload = JSON.parse(params[:payload])
 
-  if payload[:status_message] == 'Passed'
+  if payload["status_message"] == 'Passed'
     green
   else
     red
