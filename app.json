@@ -1,0 +1,19 @@
+{
+  "name": "Littlebits Travis Webhook",
+  "description": "Travis Webhook that sends output to a littleBits CloudBit",
+  "keywords": [
+    "littleBits",
+    "travis-ci",
+    "sinatra"
+  ],
+  "addons": [],
+  "env": {
+    "LANG": "en_US.UTF-8",
+    "RACK_ENV": "production",
+    "CLOUDBIT_ACCESS_TOKEN": "REDACTED",
+    "CLOUDBIT_DEVICE_ID": "REDACTED",
+    "TRAVIS_USER_TOKEN": "REDACTED",
+    "HTTP_TRAVIS_REPO_SLUG": "REDACTED",
+    "HTTP_AUTHENTICATION": "REDACTED"
+  }
+}
