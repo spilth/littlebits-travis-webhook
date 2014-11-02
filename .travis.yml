@@ -1,3 +1,8 @@
 notifications:
   webhooks:
-    - https://littlebits-ci-status.herokuapp.com/
+  - https://littlebits-ci-status.herokuapp.com/
+deploy:
+  provider: heroku
+  app: littlebits-ci-status
+  api_key:
+    secure: Gh1ABZHoorw0EcHRwlN5EL44H0akDpY2UjAV5GlqMhSHnX8vN3pYW9RHgapWrY+gXw64OQtPAF+8/qd2QJ8OJCWCsPgYcxql0uc3+rthV6/t6bF3CzDDqIYNCkjqw263pEOxRdPSisTaf4wK1pGqYIzCbpkSpnNMSuNnj90ooHI=
