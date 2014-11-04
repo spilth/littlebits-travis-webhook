@@ -1,6 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    cloud_bit (0.0.1)
+      rest_client (~> 1.8)
     dotenv (1.0.2)
     netrc (0.7.9)
     rack (1.5.2)
@@ -19,6 +21,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  cloud_bit
   dotenv
   rack
   rake

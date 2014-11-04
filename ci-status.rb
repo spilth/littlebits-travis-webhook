@@ -2,7 +2,7 @@ require 'sinatra'
 require 'json'
 require 'dotenv'
 require 'digest/sha2'
-require './cloud_bit_client'
+require 'cloud_bit'
 
 Dotenv.load
 
@@ -30,7 +30,7 @@ class TravisWebhook < Sinatra::Base
     else
       payload = JSON.parse(params[:payload])
 
-      if payload["status_message"] == 'Passed'
+      if payload['status_message'] == 'Passed'
         success
       else
         failure
@@ -62,16 +62,16 @@ class TravisWebhook < Sinatra::Base
   end
 
   def failure
-    cloudbitClient.output(0)
-    "Failure"
+    cloudbit.output(0, -1)
+    'Failure'
   end
 
   def success
-    cloudbitClient.output(100)
-    "Success"
+    cloudbit.output(100, -1)
+    'Success'
   end
 
-  def cloudbitClient
-    CloudBitClient.new(settings.cloudbit_token, settings.cloudbit_id)
+  def cloudbit
+    CloudBit::Client.new(settings.cloudbit_token, settings.cloudbit_id)
   end
 end
