@@ -1,3 +1,3 @@
-require './ci-status'
+require './travis_webhook'
 
 run TravisWebhook
