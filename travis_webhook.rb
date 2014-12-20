@@ -2,7 +2,7 @@ require 'sinatra'
 require 'json'
 require 'dotenv'
 require 'digest/sha2'
-require 'cloud_bit'
+require 'little_bits'
 
 Dotenv.load
 
@@ -72,6 +72,6 @@ class TravisWebhook < Sinatra::Base
   end
 
   def cloudbit
-    CloudBit::Client.new(settings.cloudbit_token, settings.cloudbit_id)
+    LittleBits::CloudBit.new(settings.cloudbit_token, settings.cloudbit_id)
   end
 end
